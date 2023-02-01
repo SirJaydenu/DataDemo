@@ -7,7 +7,6 @@ def get_data_list(FILE_NAME):
 	file = open("sampleData.csv", "r")
 	categories = f.readline()
 	x = 1
-	line = file.readline()
 	while(line):
 		print("Line", x, ": ", line)
 		line = file.readline()
