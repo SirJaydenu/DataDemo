@@ -4,14 +4,18 @@
 #brief: get a list of the stock's records' lists
 #return: a list of lists <list>
 def get_data_list(FILE_NAME):
-	file = open("table.csv", "r")
-	list = []
+	file = open(FILE_NAME, "r")
 	categories = file.readline()
-	x = 1
-	while(line):
-		list.append("Line", x, ": ", line)
-		line = file.readline()
-		x += 1
+	line = file.readline()
+ 
+	list = []
+	print(line.split(","))
+	
+	# x = 1
+	# while(line):
+	# 	list.append(print(line.split(",")))
+	# 	line = file.readline()
+	# 	x += 1
 	return list 
 
 #name: get_monthly_averages
