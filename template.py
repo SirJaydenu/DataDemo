@@ -7,15 +7,12 @@ def get_data_list(FILE_NAME):
 	file = open(FILE_NAME, "r")
 	categories = file.readline()
 	line = file.readline()
- 
+	x = 1
 	list = []
-	print(line.split(","))
-	
-	# x = 1
-	# while(line):
-	# 	list.append(print(line.split(",")))
-	# 	line = file.readline()
-	# 	x += 1
+	while(line):
+		list.append(print(line.split(",")))
+		line = file.readline()
+		x += 1
 	return list 
 
 #name: get_monthly_averages
@@ -23,7 +20,15 @@ def get_data_list(FILE_NAME):
 #brief: get a list of the stock's monthly averages and their corresponding dates
 #return: a list <list>
 def get_monthly_averages(data_list):
-    return   
+    FILE_NAME = "table.csv"
+    list = get_data_list(FILE_NAME)
+    file = open(FILE_NAME, "r")
+    line = file.read()
+    data_list = list
+    for x in range(1):
+        data_list.append(print(line.split(",")))
+        print()
+    return data_list
 
 #name: print_info
 #param: monthly_average_list <list> - the list that you will process
@@ -34,7 +39,9 @@ def print_info(monthly_average_list):
 	print("Top 6 worst months for google stocks: ")
 	
 	return
-get_data_list("table.csv")
+#get_data_list("table.csv")
+get_monthly_averages("table.csv")
+print("f")
 # call get_data_list function to get the data list, save the return in data_list
 
 # call get_monthly_averages function with the data_list from above, save the 
