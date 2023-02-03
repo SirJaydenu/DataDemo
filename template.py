@@ -14,7 +14,6 @@ def get_data_list(FILE_NAME):
 #return: a list <list>
 def get_monthly_averages(data_list):
 	del data_list[0]
-	avg =[]
 	monthAvgList = []
 	month = data_list[0][0][5:7]
 	res = []
@@ -29,16 +28,11 @@ def get_monthly_averages(data_list):
 			res2.append(float(v))
 		else:
 			x += 1
-			avg.append(data_list[a-1][0][:7])
-			avg.append(sum(res) / sum(res2))
-			monthAvgList.append(tuple(avg))
-			res = []
-			res2 = []
-			avg = []
+			monthAvgList.append(tuple((data_list[a-1][0][:7])))
+			monthAvgList.append(tuple((sum(res) / sum(res2))))
 			month = data_list[a][0][:7]
-	avg.append(data_list[a-1][0][:7])
-	avg.append(sum(res) / sum(res2))
-	monthAvgList.append(tuple(avg))
+	monthAvgList.append(tuple((data_list[a-1][0][:7])))
+	monthAvgList.append(tuple((sum(res) / sum(res2))))
 	return monthAvgList
 #name: print_info
 #param: monthly_average_list <list> - the list that you will process
