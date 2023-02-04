@@ -16,37 +16,54 @@ def get_monthly_averages(data_list):
 	del data_list[0]
 	avg =[]
 	monthAvgList = []
-	month = data_list[0][0][5:7]
-	res = []
-	res2 = []
-	x = 0
-	for a in range(len(data_list)):
-		if data_list[a][0][5:7] == month:
-			a -= x
-			v = data_list[a][6]
-			c = data_list[a][5]
-			res.append(float(v)*float(c))
-			res2.append(float(v))
-		else:
-			x += 1
-			avg.append(data_list[a-1][0][:7])
-			avg.append(sum(res) / sum(res2))
-			monthAvgList.append(tuple(avg))
-			res = []
-			res2 = []
-			avg = []
-			month = data_list[a][0][:7]
-	avg.append(data_list[a-1][0][:7])
-	avg.append(sum(res) / sum(res2))
-	monthAvgList.append(tuple(avg))
+	numer = 0.0
+	denom = 0.0
+	month = data_list[0][0][:7]
+	x = 1
+	for a in data_list:
+		print(a)
+		close = float(a[6])
+		volume = float(a[5])
+		
+		close2 = float(a+1[6])
+		volume2 = float(a+1[5])
+		numer = volume*close + volume2*close2
+		denom = volume+volume2
+		avg = numer/denom
+		if data_list[x][0][:7] == month:
+			
+			tuple=(data_list[0][0][:7], avg)
+			monthlyAverageList.append(tuple)
+		numer += close * volume
+		denom +=volume
+		month = data_list[x][0][:7]
+		print (monthAvgList)
+		x+=1
+	# 		a -= x
+	# 		v = data_list[a][6]
+	# 		c = data_list[a][5]
+	# 		res = []
+	# 		res2 = []
+	# 		res.append(float(v)*float(c))
+	# 		res2.append(float(v))
+	# 	else:
+	# 		x += 1
+	# 		avg.append(data_list[a-1][0][:7])
+	# 		avg.append(sum(res) / sum(res2))
+	# 		monthAvgList.append(tuple(avg))
+	# 		avg = []
+	# 		month = data_list[a][0][:7]
+	# avg.append(data_list[a-1][0][:7])
+	# avg.append(sum(res) / sum(res2))
+	# monthAvgList.append(tuple(avg))
 	return monthAvgList
 #name: print_info
 #param: monthly_average_list <list> - the list that you will process
 #brief: print the top 6 and bottom 6 months for Google stock
 #return: None
 def print_info(monthly_average_list):
-	print("Top 6 Best Months for Google Stock: " + monthAvgList.sort())
-	print("Top 6 Best Months for Google Stock: " + (monthAvgList.reverse()))
+	print("Top 6 Best Months for Google Stock: " , monthly_average_list.sort())
+	print("Bottom 6 Worse Months for Google Stock: " , (monthly_average_list.reverse()))
 print_info(get_monthly_averages((get_data_list("table.csv"))))
 # call get_data_list function to get the data list, save the return in data_list
 
