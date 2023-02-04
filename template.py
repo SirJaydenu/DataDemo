@@ -21,23 +21,21 @@ def get_monthly_averages(data_list):
 	month = data_list[0][0][:7]
 	x = 1
 	for a in data_list:
-		print(a)
 		close = float(a[6])
 		volume = float(a[5])
 		
-		close2 = float(a+1[6])
-		volume2 = float(a+1[5])
+		close2 = float(a[6])
+		volume2 = float(a[5])
 		numer = volume*close + volume2*close2
 		denom = volume+volume2
 		avg = numer/denom
 		if data_list[x][0][:7] == month:
 			
 			tuple=(data_list[0][0][:7], avg)
-			monthlyAverageList.append(tuple)
+			monthAvgList.append(tuple)
 		numer += close * volume
 		denom +=volume
 		month = data_list[x][0][:7]
-		print (monthAvgList)
 		x+=1
 	# 		a -= x
 	# 		v = data_list[a][6]
