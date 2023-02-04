@@ -1,3 +1,4 @@
+
 #name: get_data_list
 #param: FILE_NAME <str> - the file's name you saved for the stock's prices
 #brief: get a list of the stock's records' lists
@@ -14,46 +15,27 @@ def get_data_list(FILE_NAME):
 #return: a list <list>
 def get_monthly_averages(data_list):
 	del data_list[0]
-	avg =[]
 	monthAvgList = []
-	numer = 0.0
-	denom = 0.0
-	month = data_list[0][0][:7]
-	x = 1
+	avg = []
+	y=0
 	for a in data_list:
-		close = float(a[6])
-		volume = float(a[5])
-		
-		close2 = float(a[6])
-		volume2 = float(a[5])
-		numer = volume*close + volume2*close2
-		denom = volume+volume2
-		avg = numer/denom
-		if data_list[x][0][:7] == month:
-			
-			tuple=(data_list[0][0][:7], avg)
-			monthAvgList.append(tuple)
-		numer += close * volume
-		denom +=volume
-		month = data_list[x][0][:7]
-		x+=1
-	# 		a -= x
-	# 		v = data_list[a][6]
-	# 		c = data_list[a][5]
-	# 		res = []
-	# 		res2 = []
-	# 		res.append(float(v)*float(c))
-	# 		res2.append(float(v))
-	# 	else:
-	# 		x += 1
-	# 		avg.append(data_list[a-1][0][:7])
-	# 		avg.append(sum(res) / sum(res2))
-	# 		monthAvgList.append(tuple(avg))
-	# 		avg = []
-	# 		month = data_list[a][0][:7]
-	# avg.append(data_list[a-1][0][:7])
-	# avg.append(sum(res) / sum(res2))
-	# monthAvgList.append(tuple(avg))
+		#a is the row x should be the next row
+		x = next()
+		date = a[0][:7]
+		currdate = x[0][:5]
+		v1 = a[5]
+		c1 = a[6]
+		v2 = x[5]
+		c2 = x[6]
+		print(" v1: "+v1+" c1: " + c1 +" v2: "+v2+" c2: "+c2)
+		if currdate == date:
+			tuple.append(((v1 * c1 + v2 + c2) / (v1 + v2)))
+		elif currdate == date and currdate != year:
+			tuple.append(((v1*c1) / v1))
+		else:
+			print("woo")
+		monthAvgList.append(tuple())
+		y+=2
 	return monthAvgList
 #name: print_info
 #param: monthly_average_list <list> - the list that you will process

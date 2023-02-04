@@ -1,4 +1,3 @@
-
 #name: get_data_list
 #param: FILE_NAME <str> - the file's name you saved for the stock's prices
 #brief: get a list of the stock's records' lists
@@ -22,7 +21,6 @@ def get_monthly_averages(data_list):
 	month = data_list[0][0][:7]
 	x = 1
 	for a in data_list:
-		print(a)
 		close = float(a[6])
 		volume = float(a[5])
 		
@@ -31,14 +29,14 @@ def get_monthly_averages(data_list):
 		numer = volume*close + volume2*close2
 		denom = volume+volume2
 		avg = numer/denom
-		if data_list[x][0][:7] != month:
-			x+=1
+		if data_list[x][0][:7] == month:
+			
 			tuple=(data_list[0][0][:7], avg)
 			monthAvgList.append(tuple)
-			numer += close * volume
-			denom +=volume
-			month = data_list[x][0][:7]
-		
+		numer += close * volume
+		denom +=volume
+		month = data_list[x][0][:7]
+		x+=1
 	# 		a -= x
 	# 		v = data_list[a][6]
 	# 		c = data_list[a][5]
