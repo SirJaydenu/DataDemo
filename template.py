@@ -20,7 +20,7 @@ def get_monthly_averages(data_list):
 	y=0
 	for a in data_list:
 		#a is the row x should be the next row
-		x = next()
+		print(index(a))
 		date = a[0][:7]
 		currdate = x[0][:5]
 		v1 = a[5]
