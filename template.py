@@ -38,7 +38,7 @@ def print_info(monthly_average_list):
 	monthly_average_list.sort(reverse= True)
 	print("Top 6 Best Months for Google Stock: " , monthly_average_list[:6])
 	monthly_average_list.sort(reverse = True)
-	print("Bottom 6 Worse Months for Google Stock: " , (monthly_average_list[:-6:-1]))
+	print("Bottom 6 Worse Months for Google Stock: " , (monthly_average_list[:-7:-1]))
 print_info(get_monthly_averages((get_data_list("table.csv"))))
 # call get_data_list function to get the data list, save the return in data_list
 
